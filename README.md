@@ -1,94 +1,46 @@
-# Cats Dataset - Python Project
+# Cat Shop
 
 ## Project Overview
+The Cat Shop project is a Python-based simulation where users can browse and purchase cats based on various attributes, such as breed, color, age, weight, and gender. The application allows users to filter and select cats from a catalog, manage their budget, and generate a receipt after each purchase.
 
-# This is a Python-based project using a cats dataset for various data analysis tasks. 
-# The project involves loading the dataset from a CSV file, performing exploratory data analysis (EDA), 
-# and applying machine learning algorithms for classification or regression tasks.
-# The main focus is on learning from and interacting with a dataset of cats, potentially involving features 
-# like breed, age, weight, and other related attributes.
+The program uses a combination of Python libraries to provide a user-friendly, interactive experience, processing inputs and displaying results accordingly.
 
-## Features:
-# - The dataset is read from 'cats_dataset.csv'.
-# - The dataset includes multiple attributes related to cats, such as breed, age, weight, and other characteristics.
-# - Data cleaning, preprocessing, and visualization are performed to better understand the dataset and its patterns.
-# - A machine learning model can be trained to classify or predict based on the dataset's features.
+## Features
+- **Cat Catalog**: Displays available cat breeds with prices.
+- **User Preferences**: Allows users to specify preferences like breed, color, age, weight, and gender.
+- **Cat Search and Filtering**: Filters cats based on the user’s input.
+- **Budget Management**: Tracks the user’s budget and updates it after a purchase.
+- **Receipt Generation**: Generates a receipt after a purchase, displaying details about the cat and the remaining budget.
 
-## Project Pros:
+## Pros
+- **Interactive Experience**: The application prompts the user for input and provides a real-time catalog of available cats.
+- **Flexible Filtering**: Users can filter available cats by breed, color, gender, age, and weight.
+- **Simple to Use**: With minimal setup, the user can start browsing and shopping for cats right away.
+- **Budget Tracking**: The app ensures the user stays within their budget, with real-time updates on remaining funds.
+- **Receipt Generation**: A receipt is created with a breakdown of the purchase and the remaining balance.
 
-# - **Data Exploration**: The project provides a great opportunity to explore and analyze a real-world dataset.
-# - **Machine Learning Application**: By applying machine learning algorithms, this project allows for practical experience in model training and evaluation.
-# - **Data Visualization**: The project includes visualization techniques to explore relationships between different attributes of the dataset.
-# - **Insightful Predictions**: The project can be extended to predict the breed, age, or other characteristics of cats based on input data.
+## Cons
+- **Hardcoded Data**: The available cat breeds and prices are hardcoded in the application.
+- **No Real Transaction**: This is a simulation and does not involve actual financial transactions.
+- **Limited Interface**: The interaction is text-based, without a graphical user interface (GUI).
+- **Basic Error Handling**: While the app validates inputs, additional error handling and user experience features could be added.
 
-## Project Cons:
+## How It Works
+1. **Introduction**: The user is greeted with their budget and a catalog of cats.
+2. **User Input**: The user provides information about their desired cat, including breed, color, gender, age, and weight.
+3. **Filtering**: The application filters the catalog of cats based on the user's preferences and displays matching results.
+4. **Purchase and Checkout**: The user can select a cat, add it to their basket, and proceed to checkout. The remaining budget is displayed after each purchase.
+5. **Receipt Generation**: After a purchase, the user is prompted to generate a receipt for their transaction.
+6. **Retry or Exit**: After completing a purchase, the user can either continue shopping or exit the program.
 
-# - **Limited Dataset**: The dataset may have a limited number of examples or features, which could restrict the complexity of models that can be trained.
-# - **Data Quality**: The dataset may contain missing or erroneous values that could affect model performance.
-# - **No Interactive Features**: The project lacks an interactive UI for the end user to input data or get predictions directly.
+## Code Explanation
 
-## Features:
-
-# - **Dataset Exploration**: Load and inspect the dataset, analyze the distribution of features.
-# - **Data Cleaning**: Handle missing values, incorrect data, and outliers.
-# - **Data Visualization**: Create plots and graphs to visualize the data distribution and relationships between features.
-# - **Machine Learning Models**: Apply models like decision trees, random forests, or logistic regression to classify or predict characteristics of cats based on the dataset.
-
-## How It Works:
-
+### 1. Import Libraries
+```python
 import pandas as pd
 import numpy as np
+import random
+import time
+import os
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
-
-# Step 1: Dataset Loading
-dataset = pd.read_csv('cats_dataset.csv')
-
-# Step 2: Data Exploration
-print(dataset.head())
-print(dataset.describe())
-
-# Step 3: Data Cleaning
-# Handle missing values by filling them with the mean (for numerical data)
-dataset.fillna(dataset.mean(), inplace=True)
-
-# Convert categorical variables to numerical values
-dataset['breed'] = dataset['breed'].astype('category').cat.codes
-
-# Step 4: Data Visualization
-# Visualizing the distribution of numerical features
-sns.histplot(dataset['age'])
-plt.title('Age Distribution of Cats')
-plt.show()
-
-# Visualizing the relationship between age and weight
-sns.scatterplot(x=dataset['age'], y=dataset['weight'])
-plt.title('Age vs Weight')
-plt.show()
-
-# Step 5: Machine Learning
-# Prepare the features and target variable
-X = dataset.drop('breed', axis=1)  # Features
-y = dataset['breed']  # Target variable
-
-# Split the dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Train a Random Forest Classifier
-model = RandomForestClassifier()
-model.fit(X_train, y_train)
-
-# Step 6: Prediction and Evaluation
-y_pred = model.predict(X_test)
-
-# Evaluate the model's accuracy
-accuracy = accuracy_score(y_test, y_pred)
-print(f'Accuracy: {accuracy * 100:.2f}%')
-
-# Step 7: Prediction for a new cat (example)
-new_cat = np.array([[3, 4.5, 10]])  # Example data: Age, Weight, Height
-prediction = model.predict(new_cat)
-print(f'Predicted breed: {prediction}')
