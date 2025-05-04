@@ -33,14 +33,3 @@ The program uses a combination of Python libraries to provide a user-friendly, i
 5. **Receipt Generation**: After a purchase, the user is prompted to generate a receipt for their transaction.
 6. **Retry or Exit**: After completing a purchase, the user can either continue shopping or exit the program.
 
-## Code Explanation
-
-### 1. Import Libraries
-```python
-import pandas as pd
-import numpy as np
-import random
-import time
-import os
-import matplotlib.pyplot as plt
-import seaborn as sns
