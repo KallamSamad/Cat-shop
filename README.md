@@ -42,12 +42,11 @@ The **Cat Shop** project is a Python-based simulation that allows users to brows
 
 ## Example Workflow
 
-- **Step 1**: The user enters their budget.
-- **Step 2**: The user browses the catalog, selecting preferences (breed, color, etc.).
-- **Step 3**: Cats are filtered based on the input.
-- **Step 4**: The user chooses a cat and adds it to the basket.
-- **Step 5**: The user checks out, and the budget is updated.
-- **Step 6**: A receipt is generated and saved.
+- **Step 1**: The user browses the catalog, selecting preferences (breed, color, etc.).
+- **Step 2**: Cats are filtered based on the input.
+- **Step 3**: The user chooses a cat and adds it to the basket.
+- **Step 4**: The user checks out, and the budget is updated.
+- **Step 5**: A receipt is generated and saved.
 
 ## Technologies Used
 - **Python**: The core language used to build the application.
